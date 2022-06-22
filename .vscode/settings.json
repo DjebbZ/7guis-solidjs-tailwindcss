@@ -1,0 +1,6 @@
+{
+  "prettier.configPath": ".prettierrc.json",
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
+}
