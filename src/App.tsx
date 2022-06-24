@@ -1,6 +1,7 @@
 import { Component } from "solid-js";
 import Counter from "./Task1-Counter";
 import TemperatureConverter from "./Task2-TemperatureConverter";
+import FlightBooker from "./Task3-FlightBooker";
 
 const Task: Component = ({ title, children }) => {
   return (
@@ -26,6 +27,9 @@ const App: Component = () => {
       </Task>
       <Task title="Temperature Converter">
         <TemperatureConverter />
+      </Task>
+      <Task title="Book Flight">
+        <FlightBooker />
       </Task>
     </>
   );
