@@ -1,5 +1,6 @@
 import { Component } from "solid-js";
 import Counter from "./Task1-Counter";
+import TemperatureConverter from "./Task2-TemperatureConverter";
 
 const Task: Component = ({ title, children }) => {
   return (
@@ -22,6 +23,9 @@ const App: Component = () => {
     <>
       <Task title="Counter">
         <Counter />
+      </Task>
+      <Task title="Temperature Converter">
+        <TemperatureConverter />
       </Task>
     </>
   );

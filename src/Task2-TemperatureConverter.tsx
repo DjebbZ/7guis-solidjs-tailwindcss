@@ -1,5 +1,6 @@
 import { Component, createSignal, onCleanup } from "solid-js";
 import { createMachine, assign, interpret } from "xstate";
+import { useMachine } from "./useMachine";
 
 const tempMachine = createMachine({
   id: "temperature",
@@ -28,10 +29,27 @@ const tempMachine = createMachine({
   },
 });
 
-const tempService = interpret(tempMachine)
-  .onTransition((state) => {
-    console.log(state.context);
-  })
-  .start();
+const TemperatureConverter: Component = () => {
+  const [ctx, send] = useMachine(tempMachine);
 
-const TemperatureConverter: Component = () => {};
+  return (
+    <div class="grid grid-cols-12 gap-3">
+      <input
+        type="number"
+        value={ctx().celsius}
+        onInput={(evt) => send({ type: "CELSIUS", value: +evt.target.value })}
+      />
+      Celsius{" "}
+      <input
+        type="number"
+        value={ctx().farhenheit}
+        onInput={(evt) =>
+          send({ type: "FARHENHEIT", value: +evt.target.value })
+        }
+      />{" "}
+      Farhenheit
+    </div>
+  );
+};
+
+export default TemperatureConverter;
