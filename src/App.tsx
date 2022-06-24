@@ -26,9 +26,9 @@ const counterMachine = createMachine<Context, Events>({
 
 const useCounterMachine = (machine) => {
   const [count, setCount] = createSignal(machine.initialState.context.count);
-  const service = interpret(machine).onChange((ctx) => {
-    console.log({ ctx });
-    setCount(ctx.count);
+  const service = interpret(machine).onTransition((state) => {
+    console.log({ state });
+    setCount(state.context.count);
   });
   service.start();
 
